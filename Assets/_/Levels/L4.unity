@@ -58648,6 +58648,10 @@ PrefabInstance:
       propertyPath: _weapon
       value: 
       objectReference: {fileID: 1372851215}
+    - target: {fileID: 453742783, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: _wpnIdx
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1990050019, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
       propertyPath: m_Radius
       value: 7
@@ -58663,6 +58667,10 @@ PrefabInstance:
     - target: {fileID: 919132148602251193, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102415271296441509, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: _movementSpeed
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1102415271296441509, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
       propertyPath: _waypoints.Array.data[0]

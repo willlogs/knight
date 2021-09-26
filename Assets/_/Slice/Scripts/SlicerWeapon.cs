@@ -93,7 +93,7 @@ namespace DB.Knight.Slice
             {
                 float t = (float)i / (float)resolution;
                 Ray r = Camera.main.ScreenPointToRay(Vector2.Lerp(_lastMouse, Input.mousePosition, t));
-                Physics.Raycast(r, out hitInfo, 10, _layerMask);
+                Physics.Raycast(r, out hitInfo, 10, _layerMask, QueryTriggerInteraction.Ignore);
                 _lastRayHit = hitInfo.collider != null;
 
                 // hit
@@ -184,6 +184,7 @@ namespace DB.Knight.Slice
             }
         }
 
+        private bool _isSlow = false;
         private void OnStart()
         {
             _trail.enabled = true;
@@ -191,7 +192,12 @@ namespace DB.Knight.Slice
             _hitInfos = new List<RaycastHit>();
             _lastMouse = Input.mousePosition;
             _trail.transform.parent = null;
-            TimeManager.Instance.SlowDown(0.01f, 0.1f);
+
+            if (!_isSlow)
+            {
+                TimeManager.Instance.AddLayer(0.01f, 0.1f);
+                _isSlow = true;
+            }
         }
 
         private void OnEnd()
@@ -201,7 +207,12 @@ namespace DB.Knight.Slice
             _isTouching = false;
             _lastRayHit = false;
             _hasHit = false;
-            TimeManager.Instance.GoBackALayer(0.1f);
+
+            if (_isSlow)
+            {
+                TimeManager.Instance.GoBackALayer(0.1f);
+                _isSlow = false;
+            }
 
             _seq.Add(
                 transform.DOLocalMove(defaultPosition, _swordSwingDuration)
@@ -219,6 +230,13 @@ namespace DB.Knight.Slice
 
         private void OnDestroy()
         {
+            _mouseInputManager.OnClickStart -= OnStart;
+            _mouseInputManager.OnClickEnd -= OnEnd;
+        }
+
+        public override void ShutUp()
+        {
+            base.ShutUp();
             _mouseInputManager.OnClickStart -= OnStart;
             _mouseInputManager.OnClickEnd -= OnEnd;
         }

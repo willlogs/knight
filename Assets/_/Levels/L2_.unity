@@ -2462,6 +2462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 453742783, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: _wpnIdx
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1102415271296441509, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
       propertyPath: _movementSpeed
       value: 8

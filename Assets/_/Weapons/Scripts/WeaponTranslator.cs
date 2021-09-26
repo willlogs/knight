@@ -8,18 +8,28 @@ namespace DB.Knight.Weapons
 {
     public class WeaponTranslator : MonoBehaviour
     {
+        public bool _slowsDown = false;
         [FoldoutGroup("Weapon")]
         [SerializeField] protected Transform _pole;
 
         [FoldoutGroup("Variables")]
         [SerializeField] protected float _speed;
+        [FoldoutGroup("Variables")]
+        [SerializeField] public float _waitTime = 2.5f, _waitDistance = 7.5f, _slowMoFactor = 0.1f;
 
+        private bool _works = false;
         protected MouseInput _mouseInputManager;
+
+        public virtual void ShutUp()
+        {
+            _works = false;
+        }
 
         public virtual void SetUp(MouseInput mi, Transform pole = null)
         {
             _mouseInputManager = mi;
             this._pole = pole;
+            _works = true;
         }
 
         protected Vector3 _offset;

@@ -10,6 +10,7 @@ namespace DB.Knight.Weapons
         public Transform aimGoal;
 
         [SerializeField] private RectTransform _aimUI, _canvas;
+        [SerializeField] private LayerMask _layerMask;
         [SerializeField] private Image[] _pins;
         [SerializeField] private float _targetMovementSpeed = 5f;
         [SerializeField] private Gradient _strengthGradient;
@@ -33,12 +34,12 @@ namespace DB.Knight.Weapons
 
         public void Translate(Vector2 diff)
         {
-            Vector2 change = (Vector2)(diff * Time.fixedDeltaTime * _targetMovementSpeed);
+            Vector2 change = (Vector2)(diff * Time.unscaledDeltaTime * _targetMovementSpeed);
             _aimUI.anchoredPosition += change;
 
             _aimUI.anchoredPosition = new Vector2(
-                    Mathf.Clamp(_aimUI.anchoredPosition.x, -halfWidth, halfWidth),
-                    Mathf.Clamp(_aimUI.anchoredPosition.y, -halfHeight, halfHeight)
+                Mathf.Clamp(_aimUI.anchoredPosition.x, -halfWidth, halfWidth),
+                Mathf.Clamp(_aimUI.anchoredPosition.y, -halfHeight, halfHeight)
             );
 
             Vector2 sp = _canvas.localScale * _aimUI.anchoredPosition;
@@ -46,7 +47,7 @@ namespace DB.Knight.Weapons
 
             Ray r = Camera.main.ScreenPointToRay(sp);
             RaycastHit hitInfo;
-            Physics.Raycast(r, out hitInfo, 20);
+            Physics.Raycast(r, out hitInfo, 15, _layerMask, QueryTriggerInteraction.Ignore);
             if(hitInfo.collider != null)
             {
                 aimGoal.position = hitInfo.point;

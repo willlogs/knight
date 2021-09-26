@@ -41,7 +41,7 @@ namespace PT.Utils
             StartCoroutine(DelayJobExecute(delay, job));
         }
 
-        public void SlowDown(float tweenerDuration, float factor = 0.3f)
+        public void AddLayer(float tweenerDuration, float factor = 0.3f)
         {
             _isSlow = true;
             _layers.Add(factor);

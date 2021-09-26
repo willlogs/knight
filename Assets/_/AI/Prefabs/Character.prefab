@@ -3607,7 +3607,7 @@ MonoBehaviour:
   _skinnedMesh: {fileID: 8642645902571435758}
   _meatMat: {fileID: 2100000, guid: 7fd918d8809502141b5a8b4338ccafda, type: 2}
   _myCollider: {fileID: 8642645901502082215}
-  _enemy: {fileID: 0}
+  _enemy: {fileID: 8642645902522170770}
 --- !u!114 &8642645902522170770
 MonoBehaviour:
   m_ObjectHideFlags: 0

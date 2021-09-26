@@ -1,3 +1,4 @@
+using DB.Knight.Horse;
 using PT.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,8 @@ namespace DB.Knight.AI
 {
     public class CamRotator : MonoBehaviour
     {
-        [SerializeField] private float _rotSpeed = 1f;
+        [SerializeField] private float _rotSpeed = 1f, _slowmoAfter = 2.5f;
+        [SerializeField] private WeaponController _wc;
 
         private List<SimpleEnemy> _enteries = new List<SimpleEnemy>();
         private Transform _target;
@@ -41,7 +43,7 @@ namespace DB.Knight.AI
             if (!_thinking)
             {
                 _thinking = true;
-                TimeManager.Instance.DoWithDelay(2.5f, () =>
+                TimeManager.Instance.DoWithDelay(_wc._weapon._waitTime, () =>
                 {
                     for (int i = _enteries.Count - 1; i >= 0; i--)
                     {
@@ -56,9 +58,9 @@ namespace DB.Knight.AI
                         _enteries[0].OnDeath += OnLastDied;
                         _target = _enteries[0].transform;
 
-                        if (!_isSlow)
+                        if (!_isSlow && _wc._weapon._slowsDown)
                         {
-                            TimeManager.Instance.SlowDown(0.5f, 0.1f);
+                            TimeManager.Instance.AddLayer(0.5f, _wc._weapon._slowMoFactor);
                             _isSlow = true;
                         }
                     }
@@ -91,9 +93,9 @@ namespace DB.Knight.AI
                         _hasTarget = true;
                         enemy.OnDeath += OnLastDied;
 
-                        if (!_isSlow)
+                        if (!_isSlow && _wc._weapon._slowsDown)
                         {
-                            TimeManager.Instance.SlowDown(0.5f, 0.1f);
+                            TimeManager.Instance.AddLayer(0.5f, _wc._weapon._slowMoFactor);
                             _isSlow = true;
                         }
                     }

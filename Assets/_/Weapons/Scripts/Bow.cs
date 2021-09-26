@@ -1,5 +1,6 @@
 using DB.Utils;
 using DG.Tweening;
+using PT.Utils;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +36,13 @@ namespace DB.Knight.Weapons
             mi.OnClickEnd += OnEnd;
         }
 
+        public override void ShutUp()
+        {
+            base.ShutUp();
+            _mouseInputManager.OnClickStart -= OnStart;
+            _mouseInputManager.OnClickEnd -= OnEnd;
+        }
+
         private void SpawnArrow()
         {
             GameObject arrowGO = Instantiate(_arrowPrefab);
@@ -44,7 +52,7 @@ namespace DB.Knight.Weapons
             arrowGO.transform.forward = transform.forward;
 
             a.transform.localScale = Vector3.zero;
-            a.transform.DOScale(Vector3.one, 0.5f).OnComplete(() => {
+            a.transform.DOScale(Vector3.one, 0.5f).SetUpdate(true).OnComplete(() => {
                 _hasArrow = true;
                 _arrow = a;
             });
@@ -63,7 +71,7 @@ namespace DB.Knight.Weapons
             _pullTweener = _knot.DOLocalMove(
                 _knotObjective.localPosition,
                 1
-            ).OnComplete(() =>
+            ).SetUpdate(true).OnComplete(() =>
             {
                 _shakeAnimation.DORestart();
             });
@@ -71,6 +79,12 @@ namespace DB.Knight.Weapons
 
         private void Shoot()
         {
+            TimeManager.Instance.AddLayer(0.3f, 1.5f);
+            TimeManager.Instance.DoWithDelay(0.2f, () =>
+            {
+                TimeManager.Instance.GoBackALayer(0.3f);
+            });
+
             _arrow.transform.parent = null;
             _isPulling = false;
             _shakeAnimation.DOPause();
@@ -108,7 +122,7 @@ namespace DB.Knight.Weapons
 
                 if (_strength < 1)
                 {
-                    _strength += Time.deltaTime / 1;
+                    _strength += Time.unscaledDeltaTime / 1;
                 }
             }
             _aimPointer.ApplyStrength(_strength);

@@ -238,8 +238,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseInputManager: {fileID: 565131716}
+  _weapons:
+  - {fileID: 440700339212434273}
+  - {fileID: 2094763364405948033}
+  - {fileID: 2093067568431005161}
+  _wpnIdx: 0
   _weapon: {fileID: 2093067568431005161}
   _pole: {fileID: 1175915826}
+  _trigger: {fileID: 1990050019}
 --- !u!136 &453742784
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -328,6 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotSpeed: 5
+  _slowmoAfter: 2.5
+  _wc: {fileID: 453742783}
 --- !u!1 &563836972
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +799,9 @@ MonoBehaviour:
   aimGoal: {fileID: 600373954}
   _aimUI: {fileID: 1479917808}
   _canvas: {fileID: 185427359}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   _pins:
   - {fileID: 1820799589}
   - {fileID: 803155147}
@@ -1354,8 +1365,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e32d1492ba16a1a428be34ea2aa92bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slowsDown: 1
   _pole: {fileID: 1175915826}
   _speed: 3
+  _waitTime: 0.5
+  _waitDistance: 15
+  _slowMoFactor: 0.3
   _arrowPoint: {fileID: 436874332303446586}
   _knot: {fileID: 436874329063001116}
   _knotObjective: {fileID: 1155550618}
@@ -1639,8 +1654,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13cb742491cb9874ea22e0a0bfbe7b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slowsDown: 0
   _pole: {fileID: 1175915826}
   _speed: 0.05
+  _waitTime: 2.5
+  _waitDistance: 7.5
+  _slowMoFactor: 0.1
 --- !u!1 &1102415271296441563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goOnStart: 1
   _loop: 0
-  _movementSpeed: 13
+  _movementSpeed: 6
   _rotationSpeed: 3
   _animator: {fileID: 1102415271667762287}
   _waypoints:
@@ -1918,8 +1937,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 289577a7a10371543863347d4a97661f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slowsDown: 1
   _pole: {fileID: 1175915826}
   _speed: 5
+  _waitTime: 2.5
+  _waitDistance: 7.5
+  _slowMoFactor: 0.1
   _sliceEffect: {fileID: 563836973}
   _trail: {fileID: 563836974}
   _resolution: 32
