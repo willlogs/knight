@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 1990050020}
   - component: {fileID: 1990050019}
   - component: {fileID: 1990050026}
+  - component: {fileID: 6452281991501000298}
   m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -336,6 +337,19 @@ MonoBehaviour:
   _rotSpeed: 5
   _slowmoAfter: 2.5
   _wc: {fileID: 453742783}
+--- !u!114 &6452281991501000298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453742779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c33ef3a6a55f14e93def37317a7fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fps: 60
 --- !u!1 &563836972
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +821,8 @@ MonoBehaviour:
   - {fileID: 803155147}
   - {fileID: 1462784120}
   - {fileID: 2063033852}
-  _targetMovementSpeed: 500
+  _targetMovementSpeed: 1000
+  _lerpSpeed: 5
   _strengthGradient:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1378,6 +1393,7 @@ MonoBehaviour:
   _aimer: {fileID: 600373954}
   _arrowPrefab: {fileID: 4912857581703085793, guid: 6808d9b6d9fbb124f97f74221ec5e188, type: 3}
   _pullRadius: 0.2
+  _range: 0.4
   _shakeAnimation: {fileID: 440700339212434274}
   _aimPointer: {fileID: 1479917809}
 --- !u!114 &440700339212434274
