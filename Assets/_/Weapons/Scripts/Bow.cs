@@ -16,7 +16,7 @@ namespace DB.Knight.Weapons
         [FoldoutGroup("Bow Properties")]
         [SerializeField] private GameObject _arrowPrefab;
         [FoldoutGroup("Bow Properties")]
-        [SerializeField] private float _pullRadius;
+        [SerializeField] private float _pullRadius, _range = 0.4f;
         [FoldoutGroup("Bow Properties")]
         [SerializeField] private DOTweenAnimation _shakeAnimation;
 
@@ -91,7 +91,7 @@ namespace DB.Knight.Weapons
             _pullTweener?.Kill();
             _knot.localPosition = _defaultKnotPos;
             _arrow.transform.parent = null;
-            _arrow.GetShot(_aimer.position - _arrow.transform.position, 10);
+            _arrow.GetShot(_aimer.position - _arrow.transform.position, (int)(20 * _strength), _range);
             _hasArrow = false;
             _strength = 0;
 

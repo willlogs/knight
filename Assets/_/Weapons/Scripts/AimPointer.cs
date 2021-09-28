@@ -35,7 +35,8 @@ namespace DB.Knight.Weapons
         public void Translate(Vector2 diff)
         {
             Vector2 change = (Vector2)(diff * Time.unscaledDeltaTime * _targetMovementSpeed);
-            _aimUI.anchoredPosition += change;
+            Vector2 newPos = _aimUI.anchoredPosition + change;
+            _aimUI.anchoredPosition = Vector2.Lerp(_aimUI.anchoredPosition, newPos, Time.unscaledDeltaTime * 2);
 
             _aimUI.anchoredPosition = new Vector2(
                 Mathf.Clamp(_aimUI.anchoredPosition.x, -halfWidth, halfWidth),

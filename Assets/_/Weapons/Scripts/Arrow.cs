@@ -11,7 +11,7 @@ namespace DB.Knight.Weapons
     {
         public Transform arrowEnd;
 
-        public void GetShot(Vector3 dir, int dups = 0)
+        public void GetShot(Vector3 dir, int dups = 0, float range = 0.2f)
         {
             _rb.isKinematic = false;
             _collider.enabled = true;
@@ -26,7 +26,7 @@ namespace DB.Knight.Weapons
                     Random.Range(-1f, 1f),
                     Random.Range(-1f, 1f),
                     Random.Range(-1f, 1f)
-                ).normalized * 0.2f * dups / 5;
+                ).normalized * range * dups / 5;
                 Arrow arrow = clone.GetComponent<Arrow>();
                 arrow.GetShot(dir, 0);
             }
