@@ -36,7 +36,7 @@ namespace DB.Knight.Weapons
         {
             Vector2 change = (Vector2)(diff * Time.unscaledDeltaTime * _targetMovementSpeed);
             Vector2 newPos = _aimUI.anchoredPosition + change;
-            _aimUI.anchoredPosition = Vector2.Lerp(_aimUI.anchoredPosition, newPos, Time.unscaledDeltaTime * 2);
+            _aimUI.anchoredPosition = Vector2.Lerp(_aimUI.anchoredPosition, newPos, Time.unscaledDeltaTime * 5);
 
             _aimUI.anchoredPosition = new Vector2(
                 Mathf.Clamp(_aimUI.anchoredPosition.x, -halfWidth, halfWidth),
