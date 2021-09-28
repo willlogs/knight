@@ -12,7 +12,7 @@ namespace DB.Knight.Weapons
         [SerializeField] private RectTransform _aimUI, _canvas;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private Image[] _pins;
-        [SerializeField] private float _targetMovementSpeed = 5f;
+        [SerializeField] private float _targetMovementSpeed = 5f, _lerpSpeed = 5f;
         [SerializeField] private Gradient _strengthGradient;
         [SerializeField] private Vector2 _defaultSize, _tightSize;
 
@@ -36,7 +36,7 @@ namespace DB.Knight.Weapons
         {
             Vector2 change = (Vector2)(diff * Time.unscaledDeltaTime * _targetMovementSpeed);
             Vector2 newPos = _aimUI.anchoredPosition + change;
-            _aimUI.anchoredPosition = Vector2.Lerp(_aimUI.anchoredPosition, newPos, Time.unscaledDeltaTime * 5);
+            _aimUI.anchoredPosition = Vector2.Lerp(_aimUI.anchoredPosition, newPos, Time.unscaledDeltaTime * _lerpSpeed);
 
             _aimUI.anchoredPosition = new Vector2(
                 Mathf.Clamp(_aimUI.anchoredPosition.x, -halfWidth, halfWidth),
