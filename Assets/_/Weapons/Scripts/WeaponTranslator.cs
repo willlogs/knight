@@ -13,9 +13,11 @@ namespace DB.Knight.Weapons
         [SerializeField] protected Transform _pole;
 
         [FoldoutGroup("Variables")]
-        [SerializeField] protected float _speed;
+        [SerializeField] protected float _speed, _lerpSpeed = 1;
         [FoldoutGroup("Variables")]
         [SerializeField] public float _waitTime = 2.5f, _waitDistance = 7.5f, _slowMoFactor = 0.1f;
+        [FoldoutGroup("Variables")]
+        [SerializeField] protected Rigidbody _rb;
 
         private bool _works = false;
         protected MouseInput _mouseInputManager;
@@ -62,8 +64,11 @@ namespace DB.Knight.Weapons
                 0,
                 1
             );
+            rot = Quaternion.Lerp(Quaternion.identity, rot, Time.unscaledDeltaTime * _lerpSpeed);
+
             _offset = rot * _offset;
             _diff = _mouseInputManager.mouseInput;
+
             ApplyOffset();
         }
     }

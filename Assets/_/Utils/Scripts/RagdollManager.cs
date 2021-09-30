@@ -58,7 +58,7 @@ namespace DB.Utils
                 rb.interpolation = active?RigidbodyInterpolation.None:RigidbodyInterpolation.Interpolate;
                 if (_isActive)
                 {
-                    rb.drag = 5f;
+                    rb.drag = 0.5f;
                 }
             }
 

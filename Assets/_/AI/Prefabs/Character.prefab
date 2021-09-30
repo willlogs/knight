@@ -3554,7 +3554,7 @@ Animator:
   m_GameObject: {fileID: 8642645902576761466}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: df1e50c33d207bf4c985888825ec2cb6, type: 2}
+  m_Controller: {fileID: 9100000, guid: a814b7f91599d67458b2f6eecd1cb35e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3620,6 +3620,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4afc444f04bb04898640d2853d747b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeathUE:
+    m_PersistentCalls:
+      m_Calls: []
   _weapon: {fileID: 0}
   _target: {fileID: 0}
   _attackRange: 4

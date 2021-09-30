@@ -5,31 +5,30 @@ using UnityEngine.SceneManagement;
 
 namespace PT.Utils
 {
+    // scene 0 should be init scene, this scene manager circulates
     public class LevelManager : MonoBehaviour
     {
-        private static LevelManager _instance;
-
-        public static LevelManager Instance{
-            get
-            {
-                return _instance;
-            }
-        }
-
-        private void Start()
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-
         public void Next()
         {
+            int idx = SceneManager.GetActiveScene().buildIndex + 1;
+            if(idx == SceneManager.sceneCountInBuildSettings)
+            {
+                idx = 1;
+            }
+            print("loading next : " + idx);
 
+            SceneManager.LoadScene(idx);
         }
 
         public void Restart()
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
+        public void PauseGame()
+        {
+            Time.timeScale = 0;
+            Time.fixedDeltaTime = 0;
         }
     }
 }

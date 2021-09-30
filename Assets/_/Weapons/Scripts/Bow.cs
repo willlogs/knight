@@ -91,6 +91,7 @@ namespace DB.Knight.Weapons
             _pullTweener?.Kill();
             _knot.localPosition = _defaultKnotPos;
             _arrow.transform.parent = null;
+            _arrow.transform.localScale = Vector3.one;
             _arrow.GetShot(_aimer.position - _arrow.transform.position, (int)(20 * _strength), _range);
             _hasArrow = false;
             _strength = 0;

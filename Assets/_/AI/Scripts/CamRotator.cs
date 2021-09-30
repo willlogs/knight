@@ -3,13 +3,17 @@ using PT.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DB.Knight.AI
 {
     public class CamRotator : MonoBehaviour
     {
+        public UnityEvent OnPassEnemy;
+
         [SerializeField] private float _rotSpeed = 1f, _slowmoAfter = 2.5f;
         [SerializeField] private WeaponController _wc;
+        [SerializeField] private Transform _trackerT;
 
         private List<SimpleEnemy> _enteries = new List<SimpleEnemy>();
         private Transform _target;
@@ -23,14 +27,25 @@ namespace DB.Knight.AI
             {
                 if (_target != null)
                 {
-                    transform.rotation = Quaternion.Lerp(
-                        transform.rotation,
-                        Quaternion.LookRotation(_target.position + Vector3.up * 2 - transform.position),
-                        Time.unscaledDeltaTime * _rotSpeed
-                    );
+                    _trackerT.position = _target.position;
+                    if (_trackerT.localPosition.z > 0)
+                    {
+                        transform.rotation = Quaternion.Lerp(
+                            transform.rotation,
+                            Quaternion.LookRotation(_target.position + Vector3.up * 2 - transform.position),
+                            Time.unscaledDeltaTime * _rotSpeed
+                        );
+                    }
+                    else
+                    {
+                        // Lose
+                        OnPassEnemy?.Invoke();
+                        _enteries.RemoveAt(0);
+                        SwitchTarget();
+                    }
                 }
                 else
-                    OnLastDied();
+                    OnLastDied(_wc._weapon._waitTime);
             }
             else
             {
@@ -38,41 +53,49 @@ namespace DB.Knight.AI
             }
         }
 
-        private void OnLastDied()
+        private void OnLastDied(float wt)
         {
             if (!_thinking)
             {
                 _thinking = true;
-                TimeManager.Instance.DoWithDelay(_wc._weapon._waitTime, () =>
+                TimeManager.Instance.DoWithDelay(wt, () =>
                 {
-                    for (int i = _enteries.Count - 1; i >= 0; i--)
-                    {
-                        if (_enteries[i] == null)
-                        {
-                            _enteries.RemoveAt(i);
-                        }
-                    }
-
-                    if (_enteries.Count > 0)
-                    {
-                        _enteries[0].OnDeath += OnLastDied;
-                        _target = _enteries[0].transform;
-
-                        if (!_isSlow && _wc._weapon._slowsDown)
-                        {
-                            TimeManager.Instance.AddLayer(0.5f, _wc._weapon._slowMoFactor);
-                            _isSlow = true;
-                        }
-                    }
-                    else
-                    {
-                        _hasTarget = false;
-                        TimeManager.Instance.GoBackALayer(0.1f);
-                        _isSlow = false;
-                    }
-                    _thinking = false;
+                    SwitchTarget();
                 });
             }
+        }
+
+        private void SwitchTarget()
+        {
+            for (int i = _enteries.Count - 1; i >= 0; i--)
+            {
+                if (_enteries[i] == null)
+                {
+                    _enteries.RemoveAt(i);
+                }
+            }
+
+            if (_enteries.Count > 0)
+            {
+                _enteries[0].OnDeath += () =>
+                {
+                    OnLastDied(_wc._weapon._waitTime);
+                };
+                _target = _enteries[0].transform;
+
+                if (!_isSlow && _wc._weapon._slowsDown)
+                {
+                    TimeManager.Instance.AddLayer(0.5f, _wc._weapon._slowMoFactor);
+                    _isSlow = true;
+                }
+            }
+            else
+            {
+                _hasTarget = false;
+                TimeManager.Instance.GoBackALayer(0.1f);
+                _isSlow = false;
+            }
+            _thinking = false;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -91,7 +114,9 @@ namespace DB.Knight.AI
                     {
                         _target = enemy.transform;
                         _hasTarget = true;
-                        enemy.OnDeath += OnLastDied;
+                        enemy.OnDeath += () => {
+                            OnLastDied(_wc._weapon._waitTime);
+                        };
 
                         if (!_isSlow && _wc._weapon._slowsDown)
                         {
@@ -116,7 +141,7 @@ namespace DB.Knight.AI
                     _enteries.Remove(enemy);
                     if(_target == enemy.transform)
                     {
-                        OnLastDied();
+                        OnLastDied(_wc._weapon._waitTime);
                     }
                 }
             }

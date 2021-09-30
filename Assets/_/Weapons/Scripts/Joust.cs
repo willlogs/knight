@@ -20,10 +20,17 @@ namespace DB.Knight.Weapons
                 {
                     CharacterJoint cj = gameObject.AddComponent<CharacterJoint>();
                     cj.connectedBody = rb;
+                    cj.enablePreprocessing = false;
+                    cj.enableProjection = true;
                     cj.autoConfigureConnectedAnchor = false;
                     cj.connectedAnchor = Vector3.zero;
                     //cj.breakForce = 80000f;
                     _curJoint = cj;
+
+                    /*FixedJoint fj = gameObject.AddComponent<FixedJoint>();
+                    fj.connectedBody = rb;
+                    _curJoint = fj;*/
+
                     _used = true;
 
                     TimeManager.Instance.DoWithDelay(1.5f, () => {

@@ -1,12 +1,15 @@
+using PT.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DB.Knight.AI
 {
     public class SimpleEnemy : MonoBehaviour
     {
+        public UnityEvent OnDeathUE;
         public event Action OnDeath;
 
 		[SerializeField] private EnemyWeapon _weapon;
@@ -19,6 +22,10 @@ namespace DB.Knight.AI
 
         public void Die()
         {
+            TimeManager.Instance.DoWithDelay(2f, () =>
+            {
+                OnDeathUE?.Invoke();
+            });
             OnDeath?.Invoke();
             transform.parent = null;
             foreach(Component c in _deleteTheseOnDeath)
