@@ -58878,6 +58878,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horse
       objectReference: {fileID: 0}
+    - target: {fileID: 1102415271671954093, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 055e3c1ab8238564fbc170562b57e9c5, type: 2}
     - target: {fileID: 2094763364405948031, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
       propertyPath: m_IsActive
       value: 0

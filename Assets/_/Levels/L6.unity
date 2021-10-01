@@ -2331,7 +2331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 435470, guid: 5fe796031adccd745a945915d6ec60ac, type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 435470, guid: 5fe796031adccd745a945915d6ec60ac, type: 3}
       propertyPath: m_LocalScale.x
@@ -3901,7 +3901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4601039941046434, guid: f39a87f00698b7f4b951eb1246c05f73, type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4601039941046434, guid: f39a87f00698b7f4b951eb1246c05f73, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5457,6 +5457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horse
       objectReference: {fileID: 0}
+    - target: {fileID: 1102415271671954093, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 055e3c1ab8238564fbc170562b57e9c5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
 --- !u!1 &2131080093 stripped
