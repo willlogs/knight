@@ -40,7 +40,7 @@ namespace DB.Knight.Weapons
         [SerializeField] private Transform _centerOfMass;
 
         [FoldoutGroup("Variables")]
-        [SerializeField] private float _speed = 20f;
+        [SerializeField] private float _speed = 20f, _forcePower = 10000;
         [FoldoutGroup("Variables")]
         [SerializeField] private float _destroyAfter = 5f;
 
@@ -58,7 +58,7 @@ namespace DB.Knight.Weapons
                 RagdollManager rm = collision.gameObject.GetComponentInChildren<RagdollManager>();
                 if(rm != null)
                 {
-                    rm.Activate();
+                    rm.Activate(0);
                     if(rm.enemy != null)
                     {
                         rm.enemy.Die();
@@ -79,7 +79,7 @@ namespace DB.Knight.Weapons
                     transform.forward = -collision.GetContact(0).normal;*/
 
                     transform.parent = rb.transform;
-                    rb.AddForceAtPosition(transform.forward * 1000, collision.GetContact(0).point);
+                    rb.AddForceAtPosition(transform.forward * _forcePower, collision.GetContact(0).point);
                 }
                 else
                 {

@@ -11,6 +11,11 @@ namespace DB.Knight.Weapons
         private bool _used = false;
         private Joint _curJoint = null;
 
+        private void Start()
+        {
+            _used = false;
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.layer == 6 && !_used)

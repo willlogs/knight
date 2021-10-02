@@ -19,12 +19,12 @@ namespace DB.Utils
         private Collider[] _colliders;
 
         [Button("Activate")]
-        public void Activate()
+        public void Activate(float damper = 1f)
         {
             transform.parent = null;
             _mesh.transform.parent = null;
             _isActive = true;
-            SetActivation();
+            SetActivation(damper);
         }
 
         [Button("Deactivate")]
@@ -42,7 +42,7 @@ namespace DB.Utils
             SetActivation();
         }
 
-        private void SetActivation()
+        private void SetActivation(float damper = 1)
         {
             try
             {
@@ -55,10 +55,10 @@ namespace DB.Utils
             {
                 bool active = !_isActive;
                 rb.isKinematic = active;
-                rb.interpolation = active?RigidbodyInterpolation.None:RigidbodyInterpolation.Interpolate;
+                rb.interpolation = active?RigidbodyInterpolation.None:RigidbodyInterpolation.Extrapolate;
                 if (_isActive)
                 {
-                    rb.drag = 0.5f;
+                    rb.drag = damper;
                 }
             }
 

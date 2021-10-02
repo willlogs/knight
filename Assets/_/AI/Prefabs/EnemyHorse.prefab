@@ -2272,6 +2272,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8642645902567218620, guid: 77c3f8297c543204dbc4e716ba046daf, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: df1e50c33d207bf4c985888825ec2cb6, type: 2}
     - target: {fileID: 8642645902571503064, guid: 77c3f8297c543204dbc4e716ba046daf, type: 3}
       propertyPath: m_UpdateWhenOffscreen
       value: 1

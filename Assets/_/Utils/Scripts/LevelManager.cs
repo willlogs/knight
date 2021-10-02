@@ -8,6 +8,8 @@ namespace PT.Utils
     // scene 0 should be init scene, this scene manager circulates
     public class LevelManager : MonoBehaviour
     {
+        bool _isPaused = false;
+
         public void Next()
         {
             int idx = SceneManager.GetActiveScene().buildIndex + 1;
@@ -20,6 +22,12 @@ namespace PT.Utils
             SceneManager.LoadScene(idx);
         }
 
+        private void OnDestroy()
+        {
+            Time.timeScale = 1f;
+            Time.fixedDeltaTime = 1f;
+        }
+
         public void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -27,8 +35,16 @@ namespace PT.Utils
 
         public void PauseGame()
         {
-            Time.timeScale = 0;
-            Time.fixedDeltaTime = 0;
+            _isPaused = true;
+        }
+
+        private void Update()
+        {
+            if (_isPaused)
+            {
+                Time.timeScale = 0;
+                Time.fixedDeltaTime = 0;
+            }
         }
     }
 }
