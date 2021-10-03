@@ -164,6 +164,7 @@ MonoBehaviour:
   _collider: {fileID: 4506486950524423711}
   _centerOfMass: {fileID: 7304106079982962571}
   _speed: 40
+  _forcePower: 2000
   _destroyAfter: 5
   _testShoot: 0
 --- !u!54 &4912857581703085792
