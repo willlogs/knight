@@ -1391,7 +1391,7 @@ MonoBehaviour:
   - {fileID: 803155147}
   - {fileID: 1462784120}
   - {fileID: 2063033852}
-  _targetMovementSpeed: 2
+  _targetMovementSpeed: 2000
   _lerpSpeed: 0.5
   _strengthGradient:
     serializedVersion: 2
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slowsDown: 1
   _pole: {fileID: 1175915826}
-  _speed: 3
+  _speed: 1
   _lerpSpeed: 1
   _waitTime: 0.5
   _waitDistance: 15
@@ -2496,6 +2496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aaad766151297046a5f6a4c32b6d7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _horse: {fileID: 1102415271296441562}
 --- !u!114 &2093067568431005161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2510,8 +2511,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slowsDown: 0
   _pole: {fileID: 1175915826}
-  _speed: 0.8
-  _lerpSpeed: 1
+  _speed: 5
+  _lerpSpeed: 0.5
   _waitTime: 2.5
   _waitDistance: 7.5
   _slowMoFactor: 0.1

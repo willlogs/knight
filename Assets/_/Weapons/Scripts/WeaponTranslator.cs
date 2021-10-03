@@ -21,6 +21,7 @@ namespace DB.Knight.Weapons
 
         private bool _works = false;
         protected MouseInput _mouseInputManager;
+        protected float _screenMultiplier = 1f;
 
         public virtual void ShutUp()
         {
@@ -32,6 +33,7 @@ namespace DB.Knight.Weapons
             _mouseInputManager = mi;
             this._pole = pole;
             _works = true;
+            _screenMultiplier = (float)Screen.width / 1080f;
         }
 
         protected Vector3 _offset;
@@ -59,8 +61,8 @@ namespace DB.Knight.Weapons
         {
             _offset = transform.localPosition - _pole.localPosition;
             Quaternion rot = new Quaternion(
-                mp.x * Time.unscaledDeltaTime * _speed,
-                mp.y * Time.unscaledDeltaTime * _speed,
+                mp.x * Time.unscaledDeltaTime * _speed / _screenMultiplier,
+                mp.y * Time.unscaledDeltaTime * _speed / _screenMultiplier,
                 0,
                 1
             );

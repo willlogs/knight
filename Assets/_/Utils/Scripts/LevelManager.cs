@@ -25,7 +25,7 @@ namespace PT.Utils
         private void OnDestroy()
         {
             Time.timeScale = 1f;
-            Time.fixedDeltaTime = 1f;
+            Time.fixedDeltaTime = 0.01f;
         }
 
         public void Restart()

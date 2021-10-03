@@ -10,6 +10,7 @@ namespace DB.Utils
     public class RagdollManager : MonoBehaviour
     {
         public SimpleEnemy enemy;
+        public Transform root;
         [SerializeField] private bool _isActive = false;
         [SerializeField] private Collider _selfCollider;
         [SerializeField] private Rigidbody _mainRB;
@@ -19,7 +20,7 @@ namespace DB.Utils
         private Collider[] _colliders;
 
         [Button("Activate")]
-        public void Activate(float damper = 1f)
+        public void Activate(float damper = 0f)
         {
             transform.parent = null;
             _mesh.transform.parent = null;
@@ -42,7 +43,7 @@ namespace DB.Utils
             SetActivation();
         }
 
-        private void SetActivation(float damper = 1)
+        private void SetActivation(float damper = 0)
         {
             try
             {
@@ -55,7 +56,7 @@ namespace DB.Utils
             {
                 bool active = !_isActive;
                 rb.isKinematic = active;
-                rb.interpolation = active?RigidbodyInterpolation.None:RigidbodyInterpolation.Extrapolate;
+                rb.interpolation = active?RigidbodyInterpolation.None:RigidbodyInterpolation.Interpolate;
                 if (_isActive)
                 {
                     rb.drag = damper;

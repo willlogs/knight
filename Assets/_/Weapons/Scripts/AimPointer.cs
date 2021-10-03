@@ -20,6 +20,7 @@ namespace DB.Knight.Weapons
         private float halfWidthS, halfHeightS;
         private float halfWidth, halfHeight;
         private float s2cw, s2ch;
+        protected float _screenMultiplier = 1f;
 
         private void Start()
         {
@@ -30,11 +31,13 @@ namespace DB.Knight.Weapons
             halfHeight = _canvas.sizeDelta.y * 0.5f;
 
             s2cw = Screen.width / _canvas.sizeDelta.x;
+            _screenMultiplier = (float)Screen.height / 1920f;
         }
 
         public void Translate(Vector2 diff)
         {
-            Vector2 change = (Vector2)(diff * Time.unscaledDeltaTime * _targetMovementSpeed * halfHeightS);
+            Vector2 change = (Vector2)(diff * Time.unscaledDeltaTime * _targetMovementSpeed);
+            change /= _canvas.lossyScale;
             Vector2 newPos = _aimUI.anchoredPosition + change;
             _aimUI.anchoredPosition = Vector2.Lerp(_aimUI.anchoredPosition, newPos, Time.unscaledDeltaTime * _lerpSpeed);
 

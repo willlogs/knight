@@ -2769,6 +2769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 8642645902522170770}
+  root: {fileID: 8642645902576960138}
   _isActive: 0
   _selfCollider: {fileID: 8642645901502082215}
   _mainRB: {fileID: 8642645901502082216}
