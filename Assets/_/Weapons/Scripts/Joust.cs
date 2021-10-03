@@ -43,6 +43,7 @@ namespace DB.Knight.Weapons
                     cj.angularZMotion = ConfigurableJointMotion.Locked;
 
                     _curJoint = cj;
+                    _curRoot.parent = _horse;
 
                     /*FixedJoint fj = gameObject.AddComponent<FixedJoint>();
                     fj.connectedBody = rb;
@@ -73,12 +74,7 @@ namespace DB.Knight.Weapons
                     }
                     rdm.Activate();
 
-                    rdm.root.parent = _horse;
                     _curRoot = rdm.root;
-                    TimeManager.Instance.DoWithDelay(2.8f, () =>
-                    {
-                        _curRoot.parent = null;
-                    });
                 }
             }
         }
