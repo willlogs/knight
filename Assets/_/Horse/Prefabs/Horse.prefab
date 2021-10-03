@@ -1391,7 +1391,7 @@ MonoBehaviour:
   - {fileID: 803155147}
   - {fileID: 1462784120}
   - {fileID: 2063033852}
-  _targetMovementSpeed: 2000
+  _targetMovementSpeed: 4000
   _lerpSpeed: 0.5
   _strengthGradient:
     serializedVersion: 2
@@ -2231,7 +2231,7 @@ MonoBehaviour:
   _aimer: {fileID: 600373954}
   _arrowPrefab: {fileID: 4912857581703085793, guid: 6808d9b6d9fbb124f97f74221ec5e188, type: 3}
   _pullRadius: 0.2
-  _range: 0.4
+  _range: 0.1
   _shakeAnimation: {fileID: 440700339212434274}
   _aimPointer: {fileID: 1479917809}
 --- !u!114 &440700339212434274
