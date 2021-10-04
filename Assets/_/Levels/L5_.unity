@@ -833,6 +833,8 @@ MonoBehaviour:
   - {fileID: 1708882901}
   _spawnPoint: {fileID: 124742839}
   _counterActivator: 2
+  _dispatchCount: 2
+  _betweenSpawns: 2
 --- !u!4 &68922489
 Transform:
   m_ObjectHideFlags: 0
@@ -12400,6 +12402,8 @@ MonoBehaviour:
   - {fileID: 861778196}
   _spawnPoint: {fileID: 1633736767}
   _counterActivator: 2
+  _dispatchCount: 2
+  _betweenSpawns: 2
 --- !u!4 &1710511958
 Transform:
   m_ObjectHideFlags: 0
@@ -14791,6 +14795,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1102415271296441509, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: _useSlider
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102415271296441509, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
       propertyPath: _movementSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -14889,6 +14897,14 @@ PrefabInstance:
     - target: {fileID: 1102415271296441563, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
       propertyPath: m_Name
       value: Horse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559369374391896901, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070219523476114734, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c072c6bc132a4e4cb51a5be9adbef32, type: 3}

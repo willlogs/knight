@@ -2143,6 +2143,8 @@ MonoBehaviour:
   _movementSpeed: 5
   _rotationSpeed: 3
   _animator: {fileID: 5496213801420640941}
+  _slider: {fileID: 0}
+  _useSlider: 0
   _waypoints:
   - {fileID: 0}
   - {fileID: 0}

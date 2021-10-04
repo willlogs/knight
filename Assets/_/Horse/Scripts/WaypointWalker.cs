@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using MalbersAnimations;
+using UnityEngine.UI;
 
 namespace DB.Knight.Horse{
     public class WaypointWalker : MonoBehaviour
@@ -13,6 +14,10 @@ namespace DB.Knight.Horse{
         [SerializeField] private float _movementSpeed, _rotationSpeed;
         [FoldoutGroup("Variables", expanded: false)]
         [SerializeField] private Animator _animator;
+        [FoldoutGroup("Variables", expanded: false)]
+        [SerializeField] private Slider _slider;
+        [FoldoutGroup("Variables", expanded: false)]
+        [SerializeField] private bool _useSlider = true;
 
         [SerializeField] public Transform[] _waypoints;
 
@@ -20,14 +25,36 @@ namespace DB.Knight.Horse{
         private bool _hasAnimator = false;
 
         private Tweener _rotationTween, _moveTween;
+        private float _startDistance = 0;
 
         #region MonoBehaviour
         private void Start()
         {
+            try
+            {
+                if (!_useSlider)
+                {
+                    Destroy(_slider.gameObject);
+                }
+                if (_waypoints.Length > 0)
+                    _startDistance = (transform.position - _waypoints[_waypoints.Length - 1].position).magnitude;
+            }
+            catch { }
+
             _hasAnimator = _animator != null;
             if (_goOnStart)
             {
                 GotoNext(true);
+            }
+        }
+
+        private void Update()
+        {
+            if (_useSlider)
+            {
+                float percentage = _startDistance - (transform.position - _waypoints[_waypoints.Length - 1].position).magnitude;
+                percentage /= _startDistance;
+                _slider.value = percentage;
             }
         }
         #endregion

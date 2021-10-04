@@ -23,7 +23,7 @@ namespace DB.Knight.Slice
         [FoldoutGroup("Slicer Specials")]
         [SerializeField] private float _swordSwingDuration = 0.5f;
         [FoldoutGroup("Slicer Specials")]
-        [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private LayerMask _layerMask, _arrowLayer;
         [FoldoutGroup("Slicer Specials")]
         [SerializeField] private MMFeedbacks _feedback;
         [FoldoutGroup("Slicer Specials")]
@@ -85,6 +85,14 @@ namespace DB.Knight.Slice
             ///
             /// TODO: have rosolution for steps bigger than a certain amount
             ///
+            Ray rr = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rhinfo = new RaycastHit();
+            Physics.Raycast(rr, out rhinfo, 10, _arrowLayer, QueryTriggerInteraction.Ignore);
+            if(rhinfo.rigidbody != null)
+            {
+                Vector3 dir = Vector3.Cross(rhinfo.rigidbody.velocity, rr.direction);
+                rhinfo.rigidbody.velocity += rhinfo.rigidbody.velocity.magnitude / 2 * dir;
+            }
 
             // cast ray and check for hit
             int resolution = 5;
