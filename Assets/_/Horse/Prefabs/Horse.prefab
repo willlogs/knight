@@ -1391,7 +1391,7 @@ MonoBehaviour:
   - {fileID: 803155147}
   - {fileID: 1462784120}
   - {fileID: 2063033852}
-  _targetMovementSpeed: 4000
+  _targetMovementSpeed: 2000
   _lerpSpeed: 0.5
   _strengthGradient:
     serializedVersion: 2
@@ -2511,7 +2511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slowsDown: 0
   _pole: {fileID: 1175915826}
-  _speed: 5
+  _speed: 2
   _lerpSpeed: 0.5
   _waitTime: 2.5
   _waitDistance: 7.5
