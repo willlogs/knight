@@ -1391,7 +1391,7 @@ MonoBehaviour:
   - {fileID: 803155147}
   - {fileID: 1462784120}
   - {fileID: 2063033852}
-  _targetMovementSpeed: 2000
+  _targetMovementSpeed: 3200
   _lerpSpeed: 0.5
   _strengthGradient:
     serializedVersion: 2
