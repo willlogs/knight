@@ -19,6 +19,8 @@ namespace DB.Knight.Weapons
         [SerializeField] private float _pullRadius, _range = 0.4f;
         [FoldoutGroup("Bow Properties")]
         [SerializeField] private DOTweenAnimation _shakeAnimation;
+        [FoldoutGroup("Bow Properties")]
+        [SerializeField] private bool _startAnimationfromBeginning;
 
         [FoldoutGroup("UI")]
         [SerializeField] private AimPointer _aimPointer;
