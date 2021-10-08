@@ -23,6 +23,11 @@ namespace DB.Knight.Horse
 
         [SerializeField] private SphereCollider _trigger;
 
+        public void DisableWeapon()
+        {
+            _weapon.gameObject.SetActive(false);
+        }
+
         public void SetWeapon(int idx)
         {
             _wpnIdx = idx;

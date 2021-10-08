@@ -42,6 +42,7 @@ namespace DB.Knight.Weapons
                 {
                     _UI.SetActive(true);
                     _ww.StopMoving();
+                    _wc.DisableWeapon();
                 }
 
                 OnAfterTriggered?.Invoke();
