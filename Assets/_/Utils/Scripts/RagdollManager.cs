@@ -54,18 +54,26 @@ namespace DB.Utils
 
             foreach (Rigidbody rb in _rbs)
             {
-                bool active = !_isActive;
-                rb.isKinematic = active;
-                rb.interpolation = active?RigidbodyInterpolation.None:RigidbodyInterpolation.Interpolate;
-                if (_isActive)
+                try
                 {
-                    rb.drag = damper;
+                    bool active = !_isActive;
+                    rb.isKinematic = active;
+                    rb.interpolation = active ? RigidbodyInterpolation.None : RigidbodyInterpolation.Interpolate;
+                    if (_isActive)
+                    {
+                        rb.drag = damper;
+                    }
                 }
+                catch { }
             }
 
             foreach (Collider c in _colliders)
             {
-                c.enabled = _isActive;
+                try
+                {
+                    c.enabled = _isActive;
+                }
+                catch { }
             }
         }
     }

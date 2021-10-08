@@ -128,6 +128,16 @@ namespace DB.Knight.Horse{
             }
         }
 
+        public void StopMoving()
+        {
+            _curIndex = -1;
+            _moveTween.Kill();
+            if (_hasAnimator)
+            {
+                _animator.SetBool("Run", false);
+            }
+        }
+
         public void Wait(float duration)
         {
             if (duration == -1)

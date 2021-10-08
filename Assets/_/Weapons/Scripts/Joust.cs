@@ -8,6 +8,7 @@ namespace DB.Knight.Weapons
 {
     public class Joust : MonoBehaviour
     {
+        public Transform tiptop;
         [SerializeField] private Transform _horse;
 
         private bool _used = false;

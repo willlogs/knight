@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/_/Levels/L6.unity
     guid: 7c198d3a1ac68594c9336e4ff04f0cdd
   - enabled: 1
+    path: Assets/_/Levels/L12.unity
+    guid: 5acf177d0103dac43b498b339ab2fc8b
+  - enabled: 1
     path: Assets/_/Levels/L5_.unity
     guid: 98ac09d881395d3488d6e297897082f0
   - enabled: 1
@@ -39,6 +42,9 @@ EditorBuildSettings:
     path: Assets/_/Levels/L9.unity
     guid: a9ba72863f6953e46932af0ff1419f67
   - enabled: 1
+    path: Assets/_/Levels/L12_.unity
+    guid: 29470de55f739d846880ba7c2afb6eda
+  - enabled: 1
     path: Assets/_/Levels/L10.unity
     guid: e0a90342889c83d4fb0af8117e90f38a
   - enabled: 1
@@ -47,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_/Levels/L11.unity
     guid: 725d3b330cebc2546b0c907c077c0931
+  - enabled: 1
+    path: Assets/_/Levels/L13.unity
+    guid: 3c8c74f660b1b4d4988e4f8333aa22d3
   m_configObjects: {}
