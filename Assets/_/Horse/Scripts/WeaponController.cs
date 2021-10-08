@@ -25,6 +25,7 @@ namespace DB.Knight.Horse
 
         public void DisableWeapon()
         {
+            _weapon.ShutUp();
             _weapon.gameObject.SetActive(false);
         }
 
