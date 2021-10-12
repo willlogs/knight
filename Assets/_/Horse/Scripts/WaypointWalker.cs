@@ -41,15 +41,17 @@ namespace DB.Knight.Horse{
             }
             catch { }
 
-            _hasAnimator = _animator != null;
-            if (_goOnStart)
-            {
-                GotoNext(true);
-            }
+            _hasAnimator = _animator != null;            
         }
 
         private void Update()
         {
+            if (Input.GetMouseButtonDown(0) && _goOnStart)
+            {
+                _goOnStart = false;
+                GotoNext(true);
+            }
+
             if (_useSlider)
             {
                 float percentage = _startDistance - (transform.position - _waypoints[_waypoints.Length - 1].position).magnitude;
